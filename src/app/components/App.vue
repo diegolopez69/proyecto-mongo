@@ -1,0 +1,57 @@
+<template>
+    <div>
+        <nav class="navbar navbar-light bglight">
+            <a href="/" class="navbar-brand">MEVN stack</a>
+        </nav>
+    
+
+        <div class="container">
+            <div class="row pt-5">                
+                <div class="col-md-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <form @submit.prevent = "addTask">
+                                <div class="form-group">
+                                    <input type="text" v-model="task.title"
+                                    placeholder="Insert a task" 
+                                    class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <textarea v-model="task.description" 
+                                    cols="30" rows="10"
+                                    class="form-control" 
+                                    placeholder="Insert a description"></textarea>
+                                </div>
+                                <button class="btn btn-primary
+                                btn-block">Send</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+    class task {
+        constructor(title, description){
+            this.title = title;
+            this.description = description;
+        }
+    }
+    export default {
+        data () {
+            return {
+                task: new Task()
+            }
+        },
+        methods: {
+            addTask() {
+                console.log(this.task);
+                this.task.title = "";
+                this.task.description = "";
+            }
+        }
+    }
+</script>

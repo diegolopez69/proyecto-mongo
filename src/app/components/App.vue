@@ -40,6 +40,12 @@
                             <tr v-for = "task of tasks">
                                 <td>{{task.title}}</td>
                                 <td>{{task.description}}</td>
+                                <td>
+                                    <button @click="deleteTask(task._id)"
+                                    class="btn btn-danger">
+                                    Delete 
+                                    </button>
+                                </td>    
                             </tr>
                         </tbody>
                     </table>
@@ -77,7 +83,9 @@
                     }
                 })
                 .then(res => res.json())
-                .then(data => console.log(data))
+                .then(data => {
+                    this.getTasks();
+                })
                  
                 this.task = new Task();
             },
@@ -88,7 +96,20 @@
                         this.tasks = data;
                         console.log(this.tasks)
                     });
-            }
+            },
+            deleteTask(taskId) {
+                fetch('/api/tasks/' + taskId, {
+                    method: 'DELETE',
+                    headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                    }
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                    this.getTasks();
+                    });
+            },
         }
     }
 </script>

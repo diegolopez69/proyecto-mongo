@@ -48,7 +48,16 @@
         },
         methods: {
             addTask() {
-                console.log(this.task);
+                fetch('/api/tasks', {
+                    method: 'POST',
+                    body: JSON.stringify(this.task),
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-type': 'application/json'
+                    }
+                })
+                .then(res => console.log(res))
+                 
                 this.task = new Task();
             }
         }

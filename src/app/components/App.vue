@@ -28,6 +28,22 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-7">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Task</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for = "task of tasks">
+                                <td>{{task.title}}</td>
+                                <td>{{task.description}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>  
             </div>
         </div>
     </div>
@@ -43,8 +59,12 @@
     export default {
         data () {
             return {
-                task: new Task()
+                task: new Task(),
+                tasks: []
             }
+        },
+        created(){
+            this.getTasks()
         },
         methods: {
             addTask() {
@@ -56,9 +76,18 @@
                         'Content-type': 'application/json'
                     }
                 })
-                .then(res => console.log(res))
+                .then(res => res.json())
+                .then(data => console.log(data))
                  
                 this.task = new Task();
+            },
+            getTasks() {
+                fetch('api/tasks')
+                    .then(res => res.json())
+                    .then(data => {
+                        this.tasks = data;
+                        console.log(this.tasks)
+                    });
             }
         }
     }

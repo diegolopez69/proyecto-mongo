@@ -34,7 +34,7 @@
 </template>
 
 <script>
-    class task {
+    class Task {
         constructor(title, description){
             this.title = title;
             this.description = description;
@@ -49,8 +49,7 @@
         methods: {
             addTask() {
                 console.log(this.task);
-                this.task.title = "";
-                this.task.description = "";
+                this.task = new Task();
             }
         }
     }

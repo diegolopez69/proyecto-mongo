@@ -1,27 +1,27 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-// const addressSchema = new mongoose.Schema({
-    //     calle: {
-    //       type: String,
-    //       require: true
-    //     },
-    //     edificio: {
-    //       type: Number,
-    //       require: true
-    //     },
-    //     piso: {
-    //       type: Number,
-    //       require: true
-    //     }
-    //   },{
-    //     timestamps: true
-    // })
+const addressSchema = new mongoose.Schema({
+        calle: {
+          type: String,
+          require: true
+        },
+        edificio: {
+          type: Number,
+          require: true
+        },
+        piso: {
+          type: Number,
+          require: true
+        }
+      },{
+        timestamps: true
+    });
 
 const infoPersonalSchema = new mongoose.Schema({
     nombre: {
-        type: String,
-        required: true
+        type: String,   //Defino el tipo de dato que será
+        required: true  //Defino si es opcional o no
     },
     apellidos: {
         type: String,
@@ -39,10 +39,10 @@ const infoPersonalSchema = new mongoose.Schema({
         {
         type: String, 
         required: false,
-        enum: ['arroz', 'pollo', 'tomate', '']
+        enum: ['arroz', 'pollo', 'tomate', '']  //Opciones fijas que pueden estar o no dentro del campo
         }
     ],
-    //direccion: [addressSchema],
+    direccion: [addressSchema], //LLamo a el esquema de arriba
     Date: {
         type: Date,
         required: true,
@@ -52,3 +52,4 @@ const infoPersonalSchema = new mongoose.Schema({
       
 
 module.exports = mongoose.model('infoPersonal', infoPersonalSchema);
+                            //Nombre de la coleccion    Nombre del esquema

@@ -24,17 +24,12 @@
                 <div class="form-group">
                   <input type="text" v-model="infoPersonal.comida" class="form-control" placeholder="Ingrese la comida que le gusta">
                 </div>
-
-
-                
                 <template v-if="edit === false">
                   <button class="btn btn-primary btn-block">Send</button>
                 </template>
                 <template v-else>
                   <button class="btn btn-primary btn-block">Edit</button>
                 </template>
-
-
               </form>
             </div>
           </div>
@@ -71,6 +66,8 @@
     </div>
   </div>
 </template>
+
+
 
 <script>
 class InfoPersonal {

@@ -1,8 +1,6 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-
-
 // const addressSchema = new mongoose.Schema({
     //     calle: {
     //       type: String,

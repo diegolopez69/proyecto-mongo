@@ -38,8 +38,8 @@ const infoPersonalSchema = new mongoose.Schema({
     comida: [
         {
         type: String, 
-        required: true,
-        enum: ['arroz', 'pollo', 'tomate']
+        required: false,
+        enum: ['arroz', 'pollo', 'tomate', '']
         }
     ],
     //direccion: [addressSchema],

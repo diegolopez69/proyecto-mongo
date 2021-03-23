@@ -1,41 +1,41 @@
 const express = require('express');
 const router = express.Router();
-const Task = require('../models/Task');
+const InfoPersonal = require('../models/infoPersonal');
 
 //Ruta para obtener todos los usuarios
 router.get('/', async (req, res) => {
-    const task = await Task.find();
-    res.json(task);
+    const infoPersonal = await InfoPersonal.find();
+    res.json(infoPersonal);
 });
 
 //Ruta para obtener un usuario en específico
 router.get('/:id', async (req, res) => {
-    const task = await Task.findById(req.params.id);
-    res.json(task);
+    const infoPersonal = await InfoPersonal.findById(req.params.id);
+    res.json(infoPersonal);
 });
 
 //Ruta para crear un usuario
 router.post('/', async (req, res) => {
-    const task = new Task(req.body);
-    await task.save();
+    const infoPersonal = new InfoPersonal(req.body);
+    await infoPersonal.save();
     res.json({
-        status: "Task Saved"
+        status: "Usuario Guardado exitosamente"
     })
 });
 
 //Ruta para editar un usuario
 router.put('/:id', async (req, res) => {
-    await Task.findByIdAndUpdate(req.params.id, req.body);
+    await InfoPersonal.findByIdAndUpdate(req.params.id, req.body);
     res.json({
-        status: "Task Updated"  
+        status: "Usuario actualizado"  
     });
 });
 
 //Ruta para eliminar un usuario
 router.delete('/:id', async (req, res) => {
-    await Task.findByIdAndDelete(req.params.id, req.body);
+    await InfoPersonal.findByIdAndDelete(req.params.id, req.body);
     res.json({
-        status: "Task deleted"
+        status: "Usuario eliminado"
     })
 })
 

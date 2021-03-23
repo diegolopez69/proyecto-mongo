@@ -3,7 +3,7 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 
 const app = express();
-mongoose.connect('mongodb://localhost/mevn-database') //Conexión a la base de datos
+mongoose.connect('mongodb://localhost/infoPersonal') //Conexión a la base de datos
     .then(db => console.log('La base de datos está conectada')) //Mensaje que indica que la db se conecto con éxito
     .catch(err => console.err(err));   //Mensaje que indica si existe un error de conexión
 
@@ -15,7 +15,7 @@ app.use(morgan('dev'));
 app.use(express.json());
 
 //Routes
-app.use('/api/tasks', require('./routes/tasks'));
+app.use('/api/infoPersonals', require('./routes/infoPersonals'));
 
 //Archivos staticos
 app.use(express.static(__dirname + '/public'));

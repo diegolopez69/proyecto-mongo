@@ -1,3 +1,4 @@
+//Configuraciones para que el código de Vue se transforme a JS puro
 const { VueLoaderPlugin } = require('vue-loader'); 
 module.exports = {
     entry: './src/app/index.js',

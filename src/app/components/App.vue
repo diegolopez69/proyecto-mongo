@@ -1,7 +1,7 @@
 <template>
   <div>
     <nav class="navbar navbar-light bg-light">
-      <a class="navbar-brand" href="/">MEVN Tasks</a>
+      <a class="navbar-brand" href="/">Operaciones con MongoDB como base de datos...</a>
     </nav>
     <div class="container">
       <div class="row pt-5">
@@ -59,6 +59,7 @@ class Task {
     this.description = description;
   }
 }
+
 export default {
   data() {
     return {
@@ -68,12 +69,14 @@ export default {
       taskToEdit: ''
     }
   },
+  //Método de Vue que se utiliza para llamar los datos iniciales de la app
   created() {
     this.getTasks();
   },
   methods: {
+      //Método para crear un usuario
     sendTask() {
-      if(this.edit === false) {
+      if(this.edit === false) { //Validación para saber si estoy editando o creando un usuario
         fetch('/api/tasks', {
           method: 'POST',
           body: JSON.stringify(this.task),
@@ -88,7 +91,7 @@ export default {
             this.task = new Task();
           });
       }
-      else {
+      else { //Solicitud que utilizaré en caso de que este actualizando
         fetch('/api/tasks/' + this.taskToEdit, {
           method: 'PUT',
           body: JSON.stringify(this.task),
@@ -105,6 +108,7 @@ export default {
           });
       }
     },
+    //Método para obtener a los usuarios
     getTasks() {
       fetch('/api/tasks')
         .then(res => res.json())
@@ -112,6 +116,7 @@ export default {
           this.tasks = data;
         });
     },
+    //Método para eliminar a los usuarios
     deleteTask(taskId) {
       fetch('/api/tasks/' + taskId, {
         method: 'DELETE',
@@ -125,6 +130,7 @@ export default {
           this.getTasks();
         });
     },
+    //Método para actualizar a los usuarios
     editTask(taskId) {
       fetch('/api/tasks/' + taskId)
         .then(res => res.json())
